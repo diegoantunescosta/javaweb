@@ -1,0 +1,6 @@
+br\com\carro\domain\Carro.class
+br\com\carro\dao\GenericDAO.class
+br\com\carro\bean\CarroBean.class
+br\com\carro\util\HibernateUtil.class
+br\com\carro\dao\CarroDAO.class
+br\com\carro\domain\GenericDomain.class

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset= UTF-8" />
+	<title>Tela Carros</title> <!-- Título da página -->
+</h:head>
+<h:body>
+	<h:form id="formListagem">
+
+		<p:panel header="Listagem de Carros"> <!-- Nome superior -->
+
+			<p:dataTable id="tabela" paginator="true"
+				emptyMessage="Nenhum registro encontrado."
+				value="#{carroBean.carros}" var="carro" rows="15">
+				
+				<f:facet name='header'>
+				
+					<p:commandButton value="Novo" actionListener="#{carroBean.novo}" 
+						oncomplete="PF('dialogo').show();">
+					</p:commandButton> <!-- Botão novo -->
+
+				</f:facet> <!-- Campos -->
+
+				<p:column headerText="Modelo"> <!-- Nome da coluna -->
+					<h:outputText value="#{carro.modelo}" /> <!-- Dados que virão do banco -->
+				</p:column>
+
+				<p:column headerText="Cor">
+					<h:outputText value="#{carro.cor}" />
+				</p:column>
+
+				<p:column headerText="Ano">
+					<h:outputText value="#{carro.ano}" />
+				</p:column>
+
+				<p:column headerText="Marca">
+					<h:outputText value="#{carro.marca}" />
+				</p:column>
+
+				<p:column headerText="Chassi">
+					<h:outputText value="#{carro.chassi}" />
+				</p:column>
+				
+				<p:column headerText="Proprietário">
+					<h:outputText value="#{carro.proprietario}" />
+				</p:column>
+				
+				<p:column headerText="Número de portas">
+					<h:outputText value="#{carro.numPortas}" />
+				</p:column>
+
+
+			</p:dataTable>
+
+
+		</p:panel>
+
+	</h:form>
+
+	<p:dialog header="Cadastro de Carros" widgetVar="dialogo" modal="true"
+		closable="false" resizable="false" draggable="false"> 
+		<h:form id="formCadastro">
+			<h:panelGrid id="painel" columns="2">
+			
+				<p:outputLabel for="modelo" value="Modelo:"/>
+				<p:inputText id="modelo" value="#{carroBean.carro.modelo}"/>
+				
+				<p:outputLabel for="cor" value="Cor:"/>
+				<p:inputText id="cor" value="#{carroBean.carro.cor}"/>
+				
+				<p:outputLabel for="ano" value="Ano:"/>
+				<p:inputText id="ano" value="#{carroBean.carro.ano}"/>
+				
+				<p:outputLabel for="marca"  value="Marca:"/>
+				<p:inputText id="marca" value="#{carroBean.carro.marca}"/>
+				
+				<p:outputLabel for="chassi" value="Chassi:"/>
+				<p:inputText id="chassi" value="#{carroBean.carro.chassi}"/>
+				
+				<p:outputLabel for="proprietario" value="Proprietário:"/>
+				<p:inputText id="proprietario" value="#{carroBean.carro.proprietario}"/>
+				
+				<p:outputLabel for="numPortas" value="Número de portas:"/>
+				<p:inputText id="numPortas" value="#{carroBean.carro.numPortas}"/>
+			
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar" actionListener="#{carroBean.salvar}"/>
+				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();"/> 
+				
+			</h:panelGrid>
+
+		</h:form>
+
+
+	</p:dialog>
+
+</h:body>
+</html>
